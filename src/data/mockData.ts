@@ -1,0 +1,650 @@
+import type { AlumniProfile, Mentor, EventItem, OpportunityItem, NetworkingPost, AppNotification, MentorshipRequest, StudentProgress } from '../types';
+
+export const INITIAL_ALUMNI: AlumniProfile[] = [
+  {
+    id: 'alm-1',
+    name: 'Aarav Sharma',
+    avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=400',
+    gradYear: 2018,
+    department: 'Computer Science & Engineering',
+    currentRole: 'Senior AI Engineer',
+    company: 'Google DeepMind',
+    companyLogo: 'https://images.unsplash.com/photo-1573804633927-bfcbcd909acd?auto=format&fit=crop&q=80&w=100',
+    location: 'Bengaluru, India',
+    industry: 'Artificial Intelligence / Machine Learning',
+    bio: 'Passionate about Large Language Models, PyTorch, and distributed training systems. Alumni batch of 2018.',
+    skills: ['Python', 'PyTorch', 'TensorFlow', 'LLMs', 'System Design', 'C++'],
+    mentorshipAvailable: true,
+    mentorshipDomains: ['Artificial Intelligence', 'Machine Learning', 'Career Guidance'],
+    verificationStatus: 'verified',
+    email: 'aarav.sharma@alumnex-demo.org',
+    linkedin: 'https://linkedin.com/in/aaravsharma-ai',
+    github: 'https://github.com/aaravsharma-ai',
+    stats: { connections: 420, menteesAssisted: 18, endorsements: 94 },
+    careerJourney: [
+      { period: '2022 - Present', role: 'Senior AI Engineer', company: 'Google DeepMind', description: 'Leading LLM optimization team for enterprise models.' },
+      { period: '2020 - 2022', role: 'Machine Learning Engineer', company: 'Swiggy AI Lab', description: 'Built real-time demand prediction models.' },
+      { period: '2018 - 2020', role: 'Software Engineer', company: 'TCS Innovation Labs', description: 'Core computer vision research.' }
+    ],
+    education: [
+      { degree: 'B.Tech Computer Science', department: 'CSE', year: '2014 - 2018', cgpa: '9.4' }
+    ],
+    projects: [
+      { title: 'Neural Accelerator Tool', description: 'Open-source library for model compression with 3x speedup.' }
+    ],
+    achievements: ['Published 3 IEEE Papers on Transformer Architectures', 'Institute Gold Medalist 2018']
+  },
+  {
+    id: 'alm-2',
+    name: 'Priya Sundaram',
+    avatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=400',
+    gradYear: 2019,
+    department: 'Information Technology',
+    currentRole: 'Lead Product Manager',
+    company: 'Razorpay',
+    companyLogo: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=100',
+    location: 'Bengaluru, India',
+    industry: 'Fintech & Digital Payments',
+    bio: 'Building seamless checkout & payment gateway experiences for 500k+ merchants.',
+    skills: ['Product Strategy', 'UI/UX Research', 'Agile', 'SQL', 'Data Analytics', 'Roadmapping'],
+    mentorshipAvailable: true,
+    mentorshipDomains: ['Product Management', 'Career Transition', 'UI/UX Strategy'],
+    verificationStatus: 'verified',
+    email: 'priya.s@alumnex-demo.org',
+    linkedin: 'https://linkedin.com/in/priyasundaram-pm',
+    stats: { connections: 512, menteesAssisted: 24, endorsements: 120 },
+    careerJourney: [
+      { period: '2021 - Present', role: 'Lead Product Manager', company: 'Razorpay', description: 'Scaling international payments suite.' },
+      { period: '2019 - 2021', role: 'Associate PM', company: 'Swiggy', description: 'Growth product manager for consumer app.' }
+    ],
+    education: [
+      { degree: 'B.Tech IT', department: 'Information Technology', year: '2015 - 2019', cgpa: '9.1' }
+    ],
+    projects: [
+      { title: 'Instant Refunds Architecture', description: 'Reduced refund settlement latency from 3 days to instant payouts.' }
+    ],
+    achievements: ['Top 30 Under 30 Product Leaders in Fintech 2024']
+  },
+  {
+    id: 'alm-3',
+    name: 'Rohan Deshmukh',
+    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=400',
+    gradYear: 2016,
+    department: 'Electronics & Communication',
+    currentRole: 'Staff Cloud Architect',
+    company: 'Amazon Web Services (AWS)',
+    companyLogo: 'https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&q=80&w=100',
+    location: 'Hyderabad, India',
+    industry: 'Cloud Infrastructure & DevOps',
+    bio: 'Cloud Architect specialization in Kubernetes, multi-region fault tolerance, and serverless compute.',
+    skills: ['AWS', 'Kubernetes', 'Terraform', 'Golang', 'Docker', 'Distributed Systems'],
+    mentorshipAvailable: true,
+    mentorshipDomains: ['Cloud Computing', 'DevOps & SRE', 'System Design'],
+    verificationStatus: 'verified',
+    email: 'rohan.d@alumnex-demo.org',
+    linkedin: 'https://linkedin.com/in/rohandeshmukh-aws',
+    stats: { connections: 630, menteesAssisted: 31, endorsements: 154 },
+    careerJourney: [
+      { period: '2020 - Present', role: 'Staff Cloud Architect', company: 'AWS', description: 'Designing high reliability Cloud Native architectures.' },
+      { period: '2016 - 2020', role: 'DevOps Lead', company: 'Infosys', description: 'Automated CI/CD pipelines for Global 500 enterprise clients.' }
+    ],
+    education: [
+      { degree: 'B.Tech ECE', department: 'ECE', year: '2012 - 2016', cgpa: '8.9' }
+    ],
+    projects: [
+      { title: 'Serverless Autoscaler Core', description: 'High-throughput scaling plugin for Kubernetes clusters.' }
+    ],
+    achievements: ['AWS Certified Solutions Architect Professional', 'Speaker at AWS Summit 2023']
+  },
+  {
+    id: 'alm-4',
+    name: 'Ananya Verma',
+    avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=400',
+    gradYear: 2020,
+    department: 'Data Science & Artificial Intelligence',
+    currentRole: 'Senior Data Scientist',
+    company: 'Microsoft Research',
+    location: 'Bengaluru, India',
+    industry: 'Data Science & Analytics',
+    bio: 'Focused on NLP, Knowledge Graphs, and recommendation algorithms. Alumni batch 2020.',
+    skills: ['Python', 'SQL', 'NLP', 'Scikit-Learn', 'Spark', 'Databricks'],
+    mentorshipAvailable: true,
+    mentorshipDomains: ['Data Science', 'Machine Learning', 'Mock Interviews'],
+    verificationStatus: 'verified',
+    email: 'ananya.v@alumnex-demo.org',
+    linkedin: 'https://linkedin.com/in/ananyaverma-ds',
+    stats: { connections: 380, menteesAssisted: 15, endorsements: 88 },
+    careerJourney: [
+      { period: '2021 - Present', role: 'Senior Data Scientist', company: 'Microsoft', description: 'Building contextual AI recommendations.' },
+      { period: '2020 - 2021', role: 'Data Analyst', company: 'Mu Sigma', description: 'Predictive modeling for retail analytics.' }
+    ],
+    education: [{ degree: 'B.Tech Data Science', department: 'Data Science', year: '2016 - 2020', cgpa: '9.3' }],
+    projects: [{ title: 'Graph-based Fraud Detection Engine', description: 'Detected financial anomalies with 99.4% accuracy.' }],
+    achievements: ['Microsoft Hackathon Champion 2022']
+  },
+  {
+    id: 'alm-5',
+    name: 'Vikramaditya Rao',
+    avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=400',
+    gradYear: 2017,
+    department: 'Computer Science & Engineering',
+    currentRole: 'Staff Frontend Engineer',
+    company: 'CRED',
+    location: 'Bengaluru, India',
+    industry: 'Consumer Technology',
+    bio: 'Crafting pixel-perfect, 60fps mobile & web user experiences. React, Next.js, React Native enthusiast.',
+    skills: ['React', 'TypeScript', 'Next.js', 'Tailwind CSS', 'Redux', 'Web Performance'],
+    mentorshipAvailable: true,
+    mentorshipDomains: ['Frontend Engineering', 'UI/UX Architecture', 'Portfolio Review'],
+    verificationStatus: 'verified',
+    email: 'vikram.rao@alumnex-demo.org',
+    linkedin: 'https://linkedin.com/in/vikramrao-cred',
+    stats: { connections: 580, menteesAssisted: 22, endorsements: 140 },
+    careerJourney: [
+      { period: '2021 - Present', role: 'Staff UI Engineer', company: 'CRED', description: 'Core Web & App Design System lead.' },
+      { period: '2017 - 2021', role: 'Senior Frontend Dev', company: 'Flipkart', description: 'Big Billion Days checkout UI optimization.' }
+    ],
+    education: [{ degree: 'B.Tech CSE', department: 'CSE', year: '2013 - 2017', cgpa: '8.8' }],
+    projects: [{ title: 'CRED Motion UI Component Library', description: 'Shared UI design system used by 50+ engineers.' }],
+    achievements: ['Keynote Speaker at React Summit India']
+  },
+  {
+    id: 'alm-6',
+    name: 'Dr. Sneha Nair',
+    avatar: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=400',
+    gradYear: 2015,
+    department: 'Biotechnology & Bio-engineering',
+    currentRole: 'Principal Computational Biologist',
+    company: 'Biocon & AstraZeneca',
+    location: 'Pune, India',
+    industry: 'Pharmaceuticals & Genomics',
+    bio: 'Combining Genomics big data with AI to accelerate targeted cancer drug discovery.',
+    skills: ['Bioinformatics', 'Python', 'R', 'Genomics', 'Machine Learning', 'Clinical Trials'],
+    mentorshipAvailable: true,
+    mentorshipDomains: ['Biotech & Research', 'Higher Studies (MS/PhD)', 'Career Transition'],
+    verificationStatus: 'verified',
+    email: 'sneha.nair@alumnex-demo.org',
+    linkedin: 'https://linkedin.com/in/drsnehanair',
+    stats: { connections: 410, menteesAssisted: 14, endorsements: 76 },
+    careerJourney: [
+      { period: '2019 - Present', role: 'Principal Scientist', company: 'AstraZeneca', description: 'Genomics target discovery.' },
+      { period: '2015 - 2019', role: 'PhD Researcher', company: 'IISc Bangalore', description: 'Protein structural analytics.' }
+    ],
+    education: [{ degree: 'B.Tech Biotech', department: 'Biotechnology', year: '2011 - 2015', cgpa: '9.6' }],
+    projects: [{ title: 'CRISPR Target Predictor', description: 'Machine learning tool for gene editing accuracy.' }],
+    achievements: ['National Young Scientist Award 2022']
+  },
+  {
+    id: 'alm-7',
+    name: 'Karthik Raja',
+    avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=400',
+    gradYear: 2014,
+    department: 'Mechanical Engineering',
+    currentRole: 'VP of Operations',
+    company: 'Ola Electric',
+    location: 'Chennai, India',
+    industry: 'Electric Vehicles & Mobility',
+    bio: 'Scaling EV gigafactories, supply chain optimization, and automated robotics assembly lines.',
+    skills: ['Supply Chain', 'Manufacturing', 'Robotics', 'Operations', 'Leadership', 'Lean Six Sigma'],
+    mentorshipAvailable: false,
+    mentorshipDomains: ['Operations & Supply Chain', 'Leadership'],
+    verificationStatus: 'verified',
+    email: 'karthik.r@alumnex-demo.org',
+    linkedin: 'https://linkedin.com/in/karthikraja-ev',
+    stats: { connections: 890, menteesAssisted: 40, endorsements: 210 },
+    careerJourney: [
+      { period: '2020 - Present', role: 'VP Operations', company: 'Ola Electric', description: 'Built Futurefactory ops.' },
+      { period: '2014 - 2020', role: 'Plant Manager', company: 'Tata Motors', description: 'Assembly automation.' }
+    ],
+    education: [{ degree: 'B.Tech Mechanical', department: 'Mechanical', year: '2010 - 2014', cgpa: '8.7' }],
+    projects: [{ title: 'Autonomous Battery Pack Line', description: 'Automated 80% battery assembly operations.' }],
+    achievements: ['Manufacturing Excellence Trophy 2023']
+  },
+  {
+    id: 'alm-8',
+    name: 'Meera Kulkarni',
+    avatar: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&q=80&w=400',
+    gradYear: 2021,
+    department: 'Management & Business Studies (MBA)',
+    currentRole: 'Senior Investment Analyst',
+    company: 'Sequoia Capital / Peak XV',
+    location: 'Mumbai, India',
+    industry: 'Venture Capital & Fintech',
+    bio: 'Evaluating early-stage AI, SaaS, and Fintech startups across South Asia.',
+    skills: ['Financial Modeling', 'Venture Capital', 'Market Research', 'Valuation', 'Pitch Deck Analysis'],
+    mentorshipAvailable: true,
+    mentorshipDomains: ['Venture Capital', 'Startup Fundraising', 'MBA Career Guidance'],
+    verificationStatus: 'verified',
+    email: 'meera.k@alumnex-demo.org',
+    linkedin: 'https://linkedin.com/in/meerakulkarni-vc',
+    stats: { connections: 720, menteesAssisted: 28, endorsements: 165 },
+    careerJourney: [
+      { period: '2021 - Present', role: 'Senior Analyst', company: 'Peak XV Partners', description: 'Due diligence on Seed & Series A AI startups.' }
+    ],
+    education: [{ degree: 'MBA Finance & Strategy', department: 'Management', year: '2019 - 2021', cgpa: '9.2' }],
+    projects: [{ title: 'State of Indian AI Report 2024', description: 'Co-authored definitive report on AI investments in India.' }],
+    achievements: ['Speaker at VCCircle Venture Summit']
+  },
+  {
+    id: 'alm-9',
+    name: 'Siddharth Iyer',
+    avatar: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=400',
+    gradYear: 2022,
+    department: 'Computer Science & Engineering',
+    currentRole: 'Backend Systems Engineer',
+    company: 'Swiggy',
+    location: 'Bengaluru, India',
+    industry: 'Hyperlocal Logistics & E-commerce',
+    bio: 'Low latency microservices, Go, Redis, Kafka streaming for 10M daily transactions.',
+    skills: ['Go', 'Microservices', 'Kafka', 'Redis', 'PostgreSQL', 'System Architecture'],
+    mentorshipAvailable: true,
+    mentorshipDomains: ['Backend Engineering', 'System Design', 'Competitive Programming'],
+    verificationStatus: 'verified',
+    email: 'siddharth.i@alumnex-demo.org',
+    linkedin: 'https://linkedin.com/in/siddharthiyer-go',
+    stats: { connections: 340, menteesAssisted: 12, endorsements: 70 },
+    careerJourney: [{ period: '2022 - Present', role: 'Software Engineer', company: 'Swiggy', description: 'Order dispatch engine backend.' }],
+    education: [{ degree: 'B.Tech CSE', department: 'CSE', year: '2018 - 2022', cgpa: '9.0' }],
+    projects: [{ title: 'Distributed Rate Limiter', description: 'Open source Redis token bucket implementation.' }],
+    achievements: ['Candidate Master on Codeforces']
+  },
+  {
+    id: 'alm-10',
+    name: 'Neha Gupta',
+    avatar: 'https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?auto=format&fit=crop&q=80&w=400',
+    gradYear: 2023,
+    department: 'Civil Engineering',
+    currentRole: 'Smart Cities Infrastructure Engineer',
+    company: 'L&T Construction',
+    location: 'Delhi NCR, India',
+    industry: 'Infrastructure & Urban Tech',
+    bio: 'BIM modeling, sustainable urban planning, and IoT sensor integration for Smart Transit Hubs.',
+    skills: ['AutoCAD', 'BIM', 'Structural Analysis', 'Project Management', 'GIS', 'Sustainability'],
+    mentorshipAvailable: true,
+    mentorshipDomains: ['Civil Infrastructure', 'Government Tech', 'Career Guidance'],
+    verificationStatus: 'verified',
+    email: 'neha.g@alumnex-demo.org',
+    linkedin: 'https://linkedin.com/in/nehagupta-civil',
+    stats: { connections: 290, menteesAssisted: 9, endorsements: 54 },
+    careerJourney: [{ period: '2023 - Present', role: 'Project Engineer', company: 'L&T', description: 'Regional Smart City transit project.' }],
+    education: [{ degree: 'B.Tech Civil', department: 'Civil Engineering', year: '2019 - 2023', cgpa: '8.9' }],
+    projects: [{ title: 'Green Concrete Structural Test', description: 'Eco-friendly recycled concrete blend.' }],
+    achievements: ['Best Final Year Project Award 2023']
+  },
+  {
+    id: 'alm-11',
+    name: 'Aditya Mukherji',
+    avatar: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=400',
+    gradYear: 2023,
+    department: 'Computer Science & Engineering',
+    currentRole: 'Security Analyst & Ethical Hacker',
+    company: 'Palo Alto Networks',
+    location: 'Bengaluru, India',
+    industry: 'Cybersecurity & Cloud Defense',
+    bio: 'Zero trust architecture, penetration testing, threat hunting, and cloud perimeter defense.',
+    skills: ['Cybersecurity', 'Python', 'Ethical Hacking', 'Cloud Security', 'Network Protocol', 'Linux'],
+    mentorshipAvailable: true,
+    mentorshipDomains: ['Cybersecurity', 'Ethical Hacking', 'Certification Advice'],
+    verificationStatus: 'pending',
+    email: 'aditya.m@alumnex-demo.org',
+    linkedin: 'https://linkedin.com/in/adityamukherji-sec',
+    stats: { connections: 310, menteesAssisted: 8, endorsements: 62 },
+    careerJourney: [{ period: '2023 - Present', role: 'Security Analyst', company: 'Palo Alto Networks', description: 'Threat detection engine.' }],
+    education: [{ degree: 'B.Tech CSE', department: 'CSE', year: '2019 - 2023', cgpa: '9.1' }],
+    projects: [{ title: 'Automated Vulnerability Scanner', description: 'Discovered 14 CVE vulnerabilities.' }],
+    achievements: ['OSCP Certified', 'Top 5 in Bug Bounty Leaderboard']
+  },
+  {
+    id: 'alm-12',
+    name: 'Ritu Bhattacharya',
+    avatar: 'https://images.unsplash.com/photo-1548142813-c348350df52b?auto=format&fit=crop&q=80&w=400',
+    gradYear: 2024,
+    department: 'Artificial Intelligence & Machine Learning',
+    currentRole: 'GenAI Specialist Engineer',
+    company: 'Adobe Systems',
+    location: 'Noida, India',
+    industry: 'Generative AI & Digital Media',
+    bio: 'Diffusion models, prompt synthesis, vector databases, and fine-tuning Open-Source LLMs.',
+    skills: ['Generative AI', 'PyTorch', 'LangChain', 'Pinecone', 'FastAPI', 'React'],
+    mentorshipAvailable: true,
+    mentorshipDomains: ['Generative AI', 'Project Guidance', 'Freshers Placement Prep'],
+    verificationStatus: 'pending',
+    email: 'ritu.b@alumnex-demo.org',
+    linkedin: 'https://linkedin.com/in/ritubhattacharya-ai',
+    stats: { connections: 210, menteesAssisted: 6, endorsements: 44 },
+    careerJourney: [{ period: '2024 - Present', role: 'GenAI Developer', company: 'Adobe', description: 'Firefly AI core team.' }],
+    education: [{ degree: 'B.Tech AIML', department: 'AI/ML', year: '2020 - 2024', cgpa: '9.5' }],
+    projects: [{ title: 'Multimodal RAG Assistant', description: 'Document search bot built for institution library.' }],
+    achievements: ['Hackathon Gold Winner 2024']
+  },
+  {
+    id: 'alm-13',
+    name: 'Devendra Patel',
+    avatar: 'https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&q=80&w=400',
+    gradYear: 2015,
+    department: 'Electrical & Electronics',
+    currentRole: 'Founder & CEO',
+    company: 'VoltGrid Energy (Tech Startup)',
+    location: 'Ahmedabad, India',
+    industry: 'CleanTech & Smart Grid',
+    bio: 'Founder building IoT smart energy meters saving 40GWh for industrial manufacturing units.',
+    skills: ['Entrepreneurship', 'IoT', 'Embedded C', 'Hardware Design', 'Fundraising', 'Strategy'],
+    mentorshipAvailable: true,
+    mentorshipDomains: ['Entrepreneurship & Startups', 'Hardware & IoT', 'Pitching'],
+    verificationStatus: 'verified',
+    email: 'dev.patel@alumnex-demo.org',
+    linkedin: 'https://linkedin.com/in/devendrapatel-volt',
+    stats: { connections: 950, menteesAssisted: 35, endorsements: 240 },
+    careerJourney: [{ period: '2018 - Present', role: 'Founder & CEO', company: 'VoltGrid', description: 'Raised $4M Series A.' }],
+    education: [{ degree: 'B.Tech EEE', department: 'EEE', year: '2011 - 2015', cgpa: '8.6' }],
+    projects: [{ title: 'AI Smart Meter Grid', description: 'Grid load balancing algorithm.' }],
+    achievements: ['Forbes 30 Under 30 Asia 2023']
+  }
+];
+
+export const INITIAL_MENTORS: Mentor[] = [
+  {
+    id: 'mnt-1',
+    alumniId: 'alm-1',
+    alumni: INITIAL_ALUMNI[0],
+    domain: 'Artificial Intelligence & ML',
+    experienceLevel: 'Senior (7+ yrs)',
+    maxMentees: 5,
+    activeMentees: 3,
+    rating: 4.9,
+    preferredType: '1-on-1 Sessions'
+  },
+  {
+    id: 'mnt-2',
+    alumniId: 'alm-2',
+    alumni: INITIAL_ALUMNI[1],
+    domain: 'Product Management',
+    experienceLevel: 'Mid-Level (3-7 yrs)',
+    maxMentees: 4,
+    activeMentees: 2,
+    rating: 4.95,
+    preferredType: 'Career Guidance'
+  },
+  {
+    id: 'mnt-3',
+    alumniId: 'alm-3',
+    alumni: INITIAL_ALUMNI[2],
+    domain: 'Cloud & DevOps Architecture',
+    experienceLevel: 'Senior (7+ yrs)',
+    maxMentees: 6,
+    activeMentees: 4,
+    rating: 4.88,
+    preferredType: 'Mock Interviews'
+  },
+  {
+    id: 'mnt-4',
+    alumniId: 'alm-4',
+    alumni: INITIAL_ALUMNI[3],
+    domain: 'Data Science & NLP',
+    experienceLevel: 'Mid-Level (3-7 yrs)',
+    maxMentees: 4,
+    activeMentees: 3,
+    rating: 4.85,
+    preferredType: 'Resume Review'
+  },
+  {
+    id: 'mnt-5',
+    alumniId: 'alm-5',
+    alumni: INITIAL_ALUMNI[4],
+    domain: 'Frontend Engineering & UI/UX',
+    experienceLevel: 'Senior (7+ yrs)',
+    maxMentees: 5,
+    activeMentees: 4,
+    rating: 4.92,
+    preferredType: 'Project Feedback'
+  },
+  {
+    id: 'mnt-6',
+    alumniId: 'alm-8',
+    alumni: INITIAL_ALUMNI[7],
+    domain: 'Venture Capital & Startups',
+    experienceLevel: 'Mid-Level (3-7 yrs)',
+    maxMentees: 3,
+    activeMentees: 1,
+    rating: 5.0,
+    preferredType: '1-on-1 Sessions'
+  },
+  {
+    id: 'mnt-7',
+    alumniId: 'alm-9',
+    alumni: INITIAL_ALUMNI[8],
+    domain: 'Backend Engineering & Go',
+    experienceLevel: 'Junior Alumni (1-3 yrs)',
+    maxMentees: 4,
+    activeMentees: 2,
+    rating: 4.8,
+    preferredType: 'Mock Interviews'
+  },
+  {
+    id: 'mnt-8',
+    alumniId: 'alm-12',
+    alumni: INITIAL_ALUMNI[11],
+    domain: 'Generative AI & LLMs',
+    experienceLevel: 'Junior Alumni (1-3 yrs)',
+    maxMentees: 4,
+    activeMentees: 3,
+    rating: 4.9,
+    preferredType: 'Project Feedback'
+  },
+  {
+    id: 'mnt-9',
+    alumniId: 'alm-13',
+    alumni: INITIAL_ALUMNI[12],
+    domain: 'Entrepreneurship & IoT',
+    experienceLevel: 'Senior (7+ yrs)',
+    maxMentees: 5,
+    activeMentees: 4,
+    rating: 4.96,
+    preferredType: '1-on-1 Sessions'
+  }
+];
+
+export const INITIAL_EVENTS: EventItem[] = [
+  {
+    id: 'evt-1',
+    title: 'Generative AI Summit 2026: From LLMs to Autonomous Agents',
+    description: 'Join Google DeepMind & Adobe alumni for a deep-dive workshop on building multi-agent LLM pipelines with real code demos.',
+    banner: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&q=80&w=800',
+    date: 'Oct 24, 2026',
+    time: '05:30 PM - 07:30 PM IST',
+    venue: 'Main Auditorium / Online Stream',
+    category: 'Alumni Meet',
+    speaker: 'Aarav Sharma & Ritu Bhattacharya',
+    speakerRole: 'Senior AI Engineer & GenAI Specialist',
+    speakerCompany: 'Google DeepMind / Adobe',
+    speakerAvatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=200',
+    attendeesCount: 184,
+    maxAttendees: 300,
+    isRegistered: false,
+    isPast: false,
+    locationType: 'Online',
+    meetingLink: 'https://alumnex.meet/genai-2026'
+  },
+  {
+    id: 'evt-2',
+    title: 'Cracking Product Management at Razorpay & Swiggy',
+    description: 'Learn the exact product frameworks, interview strategies, and execution playbooks from alumni product leaders.',
+    banner: 'https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&q=80&w=800',
+    date: 'Nov 02, 2026',
+    time: '06:00 PM - 07:30 PM IST',
+    venue: 'Virtual Zoom Room 1',
+    category: 'Career Talk',
+    speaker: 'Priya Sundaram',
+    speakerRole: 'Lead Product Manager',
+    speakerCompany: 'Razorpay',
+    speakerAvatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=200',
+    attendeesCount: 230,
+    maxAttendees: 400,
+    isRegistered: true,
+    isPast: false,
+    locationType: 'Online',
+    meetingLink: 'https://alumnex.meet/pm-masterclass'
+  },
+  {
+    id: 'evt-3',
+    title: 'Global Alumni Annual Reunion & Networking Gala 2026',
+    description: 'The flagship annual gathering connecting 1,000+ alumni across batches with current students, faculty, and industry leaders.',
+    banner: 'https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&q=80&w=800',
+    date: 'Dec 15, 2026',
+    time: '10:00 AM - 09:00 PM IST',
+    venue: 'Grand Campus Convention Hall',
+    category: 'Networking',
+    speaker: 'Institutional Leadership & Guests',
+    speakerRole: 'Keynote Panel',
+    speakerCompany: 'Alumni Association Board',
+    speakerAvatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=200',
+    attendeesCount: 640,
+    maxAttendees: 1000,
+    isRegistered: false,
+    isPast: false,
+    locationType: 'In-Person'
+  },
+  {
+    id: 'evt-4',
+    title: 'Cloud Native & Kubernetes Hands-On Masterclass',
+    description: 'Step-by-step lab on configuring resilient EKS microservices, Terraform automation, and CI/CD pipelines.',
+    banner: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=800',
+    date: 'Nov 12, 2026',
+    time: '04:00 PM - 06:00 PM IST',
+    venue: 'CS Lab 3 & Online',
+    category: 'Workshop',
+    speaker: 'Rohan Deshmukh',
+    speakerRole: 'Staff Cloud Architect',
+    speakerCompany: 'AWS',
+    speakerAvatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=200',
+    attendeesCount: 145,
+    maxAttendees: 200,
+    isRegistered: false,
+    isPast: false,
+    locationType: 'Online'
+  }
+];
+
+export const INITIAL_OPPORTUNITIES: OpportunityItem[] = [
+  {
+    id: 'opp-1',
+    title: 'Software Development Intern (AI / Backend)',
+    company: 'Razorpay',
+    companyLogo: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=100',
+    role: 'Software Engineer Intern',
+    industry: 'Fintech',
+    location: 'Bengaluru / Hybrid',
+    workType: 'Hybrid',
+    type: 'Internship',
+    experienceLevel: 'Intern',
+    stipendOrSalary: '₹45,000 / month',
+    skills: ['Python', 'Node.js', 'PostgreSQL', 'REST APIs'],
+    postedByAlumniId: 'alm-2',
+    postedByAlumniName: 'Priya Sundaram',
+    postedByAlumniAvatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=200',
+    postedDate: '2 days ago',
+    deadline: 'Oct 30, 2026',
+    description: 'We are hiring 2 energetic final-year B.Tech students for our Payments Infrastructure team. Excellent path to pre-placement offer (PPO).',
+    requirements: ['Solid CS Fundamentals', 'Proficiency in Python or Node.js', 'Good understanding of SQL'],
+    isApplied: false
+  },
+  {
+    id: 'opp-2',
+    title: 'Associate Machine Learning Engineer',
+    company: 'Swiggy AI Labs',
+    companyLogo: 'https://images.unsplash.com/photo-1573804633927-bfcbcd909acd?auto=format&fit=crop&q=80&w=100',
+    role: 'ML Engineer',
+    industry: 'FoodTech & Hyperlocal',
+    location: 'Bengaluru, India',
+    workType: 'On-site',
+    type: 'Job',
+    experienceLevel: 'Entry-Level',
+    stipendOrSalary: '₹18 - 22 LPA',
+    skills: ['Python', 'PyTorch', 'System Design', 'Redis'],
+    postedByAlumniId: 'alm-1',
+    postedByAlumniName: 'Aarav Sharma',
+    postedByAlumniAvatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=200',
+    postedDate: '3 days ago',
+    deadline: 'Nov 10, 2026',
+    description: 'Direct referral opportunity for 2025/2026 CSE/IT graduates. Work on dynamic delivery routing & ETA prediction models.',
+    requirements: ['Strong Data Structures & Algorithms', 'Experience with PyTorch or TensorFlow', 'Final year project in ML/DL'],
+    isApplied: true
+  }
+];
+
+export const INITIAL_POSTS: NetworkingPost[] = [
+  {
+    id: 'post-1',
+    authorId: 'alm-1',
+    authorName: 'Aarav Sharma',
+    authorAvatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=200',
+    authorRole: 'Senior AI Engineer @ Google DeepMind',
+    authorCompany: 'Google DeepMind',
+    authorBadge: 'Alumni',
+    timestamp: '3 hours ago',
+    category: 'Career',
+    title: '🚀 5 Essential Skills Every Student Needs for the GenAI Era (2026 Edition)',
+    content: 'Having interviewed over 50+ fresh graduates this year, the gap is no longer basic coding syntax—it is understanding model evaluation, vector index scaling, and system latency tuning. If you are preparing for AI engineering roles, focus on: 1. Distributed PyTorch training 2. RAG Evaluation frameworks 3. Quantization techniques.',
+    tags: ['ArtificialIntelligence', 'CareerAdvice', 'GenAI', 'TechTips'],
+    likesCount: 142,
+    isLiked: true,
+    commentsCount: 2,
+    comments: [
+      {
+        id: 'c1',
+        authorName: 'Rahul Verma (Final Year CSE)',
+        authorAvatar: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=100',
+        authorRole: 'Student',
+        timestamp: '2 hours ago',
+        content: 'Thanks Aarav sir! What vector database would you recommend starting with for campus projects?'
+      }
+    ],
+    isSaved: true
+  }
+];
+
+export const INITIAL_NOTIFICATIONS: AppNotification[] = [
+  {
+    id: 'notif-1',
+    type: 'mentorship_accept',
+    title: 'Mentorship Request Accepted!',
+    message: 'Aarav Sharma (Senior AI Engineer @ Google DeepMind) accepted your mentorship request.',
+    timestamp: '10 mins ago',
+    read: false,
+    targetTab: 'student-dashboard'
+  },
+  {
+    id: 'notif-2',
+    type: 'event_reminder',
+    title: 'Upcoming Event Tomorrow',
+    message: 'Event "Generative AI Summit 2026" starts in 24 hours. Check meeting details.',
+    timestamp: '2 hours ago',
+    read: false,
+    targetTab: 'events'
+  }
+];
+
+export const INITIAL_MENTORSHIP_REQUESTS: MentorshipRequest[] = [
+  {
+    id: 'req-101',
+    studentName: 'Rohan Sharma',
+    studentAvatar: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=200',
+    studentDepartment: 'Computer Science & Engineering',
+    studentYear: 'Final Year B.Tech',
+    mentorId: 'mnt-1',
+    mentorName: 'Aarav Sharma',
+    careerGoal: 'AI Research & LLM System Design',
+    domain: 'Artificial Intelligence & ML',
+    message: 'Respected Sir, I am building a final year paper on Transformer quantization and would love your guidance.',
+    status: 'Pending',
+    dateSubmitted: 'Oct 07, 2026'
+  }
+];
+
+export const INITIAL_STUDENT_PROGRESS: StudentProgress = {
+  profileCompletion: 85,
+  mentorshipSessionsCompleted: 4,
+  connectionsCount: 28,
+  eventsAttended: 6,
+  applicationsSubmitted: 3
+};
